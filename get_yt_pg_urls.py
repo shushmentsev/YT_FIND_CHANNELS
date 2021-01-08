@@ -34,15 +34,22 @@ def get_yt_pg_urls(search_query):
 
     # Парсинг всех ссылок:
     f = open("yt_pg_urls.txt", 'w')
-    objects = drv.find_elements_by_xpath("//a[@id='video-title']")
-    i1 = 1
+
+    # TODO: Находит пары одинаковых ссылок:
+    objects = drv.find_elements_by_xpath("//ytd-channel-name[@id='channel-name']/div[@id='container']/div[@id='text-container']/yt-formatted-string[@id='text']/a")
+    x = 1
+    curr_list = list()
     for obj in objects:
         # print(obj.get_attribute("title"))
-        f.write(obj.get_attribute("href") + "\n")
-        i1 += 1
+        if x % 2 == 0:
+            if obj.get_attribute("href") not in curr_list:
+                f.write(obj.get_attribute("href") + "\n")
+            
+            curr_list.append(obj.get_attribute("href"))
+        x += 1
     f.close()
 
-    print("Count: ", i1)
+    print("Count: ", x)
 
     # Закрытие браузера:
     drv.quit()

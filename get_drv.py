@@ -1,0 +1,127 @@
+# -*- coding: utf-8 -*-
+
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from sys import platform
+
+#Путь к драйверу:
+from conf import PTH_CHROME_DRV, PTH_CHROMIUM_DRV
+
+# Настройка переменной окружения:
+from sys import path
+path.append(str(PTH_CHROME_DRV))
+path.append(str(PTH_CHROMIUM_DRV))
+
+def set_opt():
+
+    # Опции для драйвера:
+    options = Options()
+
+    # Отключение загрузки изображений:
+    prefs = {"profile.managed_default_content_settings.images": 2}
+    options.add_experimental_option("prefs", prefs)
+
+    # Размер окна:
+    # options.add_argument("--start-maximized")
+    options.add_argument("--window-size=1240x720")
+
+    # Безголовый режим:
+    #options.add_argument("headless")
+
+    return options
+
+def set_proxy(options, host, port, user, pwrd):
+
+    import os
+    import zipfile
+
+    manifest_json = """
+    {
+        "version": "1.0.0",
+        "manifest_version": 2,
+        "name": "Chrome Proxy",
+        "permissions": [
+            "proxy",
+            "tabs",
+            "unlimitedStorage",
+            "storage",
+            "<all_urls>",
+            "webRequest",
+            "webRequestBlocking"
+        ],
+        "background": {
+            "scripts": ["background.js"]
+        },
+        "minimum_chrome_version":"22.0.0"
+    }
+    """
+
+    background_js = """
+    var config = {
+            mode: "fixed_servers",
+            rules: {
+              singleProxy: {
+                scheme: "http",
+                host: "%s",
+                port: parseInt(%s)
+              },
+              bypassList: ["localhost"]
+            }
+          };
+
+    chrome.proxy.settings.set({value: config, scope: "regular"}, function() {});
+
+    function callbackFn(details) {
+        return {
+            authCredentials: {
+                username: "%s",
+                password: "%s"
+            }
+        };
+    }
+
+    chrome.webRequest.onAuthRequired.addListener(
+                callbackFn,
+                {urls: ["<all_urls>"]},
+                ['blocking']
+    );
+    """ % (host, port, user, pwrd)
+
+    pluginfile = 'proxy_auth_plugin.zip'
+
+    with zipfile.ZipFile(pluginfile, 'w') as zp:
+        zp.writestr("manifest.json", manifest_json)
+        zp.writestr("background.js", background_js)
+    
+    options.add_extension(pluginfile)
+
+    return options
+
+def get_drv():
+
+    # Настройка драйвера:
+    options = set_opt()
+    # options = set_proxy(options, "194.67.221.142", "9749", "f6a7ks", "FyWHou")    
+    
+    # Конфигурация в зависимости от платформы:
+    if platform == "linux" or platform == "linux2":
+        driver = webdriver.Chrome( \
+            options=options, \
+            executable_path=str(PTH_CHROMIUM_DRV), \
+            )
+
+    elif platform == "win32" or platform == "cygwin":
+        driver = webdriver.Chrome( \
+            options=options, \
+            executable_path=str(PTH_CHROME_DRV), \
+            )
+
+    return driver    
+
+if __name__ == "__main__":
+
+    # Получение драйвера:
+    drv = get_drv()    
+
+    # Переход на сайт:
+    drv.get("https://myip.ru/")

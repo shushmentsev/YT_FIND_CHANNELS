@@ -5,10 +5,10 @@ from get_drv import get_drv
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 
-def filt_3():
+def filt_3(path_to_urls):
 
     # Открытие файлов:
-    yt_ch_urls = open("filt_1.txt", "r")
+    yt_ch_urls = open(path_to_urls, "r")
     f_filt_3 = open("filt_3.txt", 'w')
 
     # Получение драйвера:
@@ -60,4 +60,4 @@ def filt_3():
 
 if __name__ == "__main__":
 
-    filt_3()
+    filt_3("filt_1.txt")

@@ -7,10 +7,10 @@ from time import sleep
 from datetime import date
 from datetime import datetime
 
-def filt_2():
+def filt_2(path_to_urls):
     
     # Открытие файлов:
-    yt_ch_urls = open("filt_1.txt", "r")
+    yt_ch_urls = open(path_to_urls, "r")
     f_filt_2 = open("filt_2.txt", 'w')
 
     # Получение драйвера:
@@ -100,4 +100,4 @@ def filt_2():
 
 if __name__ == "__main__":
 
-    filt_2()
+    filt_2("filt_1.txt")

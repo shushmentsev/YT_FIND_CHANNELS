@@ -2,10 +2,10 @@
 
 from get_drv import get_drv
 
-def filt_1():
+def filt_1(path_to_urls):
     #
     #from conf import PTH_H_SUBS_URLS
-    yt_ch_urls = open("yt_ch_urls.txt", "r")
+    yt_ch_urls = open(path_to_urls, "r")
 
     # Файл для записи:
     f_filt_1 = open("filt_1.txt", "w")
@@ -44,4 +44,4 @@ def filt_1():
 
 if __name__ == "__main__":
 
-    filt_1()
+    filt_1("filt_0.txt")

@@ -52,7 +52,7 @@ def filt_2(path_to_urls, days_1, days_2):
         # Фильтр по дате:
         obj = drv.find_element_by_xpath("//div[@id='right-column']/yt-formatted-string[2]/span[2]")
         list_1 = obj.get_attribute("innerHTML").split(' ')
-        print(list_1)
+        #print(list_1)
         list_1 = list_1[:3]
         if "янв" in list_1[1]:
             list_1[1] = 1
@@ -80,25 +80,25 @@ def filt_2(path_to_urls, days_1, days_2):
             list_1[1] = 12
 
         list_1.reverse()
-        print(list_1)
+        #print(list_1)
 
         list_2 = str(datetime.now())
         list_2 = list_2.split(" ")[0].split("-")
-        print(list_2)
+        #print(list_2)
         
         date_1 = date(int(list_1[0]), int(list_1[1]), int(list_1[2]))
         date_2 = date(int(list_2[0]), int(list_2[1]), int(list_2[2]))
         date_21 = date_2 - date_1
-        print(date_21)
+        #print(date_21)
 
         days = int(str(date_21).split(" ")[0])
-        print(days)
+        #print(days)
 
         if (days >= days_1) and (days < days_2):
-            print("Канал подходит по дате регистрации")
+            #print("Канал подходит по дате регистрации")
             f_filt_2.write(yt_ch_url)
 
-        print(x, " из ", count)
+        print("Фильтр 2: ", x, " из ", count)
         x += 1
         
 

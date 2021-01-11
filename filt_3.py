@@ -43,7 +43,7 @@ def filt_3(path_to_urls, video_n1, video_n2):
         for i in range(50):
             drv.find_element_by_tag_name('body').send_keys(Keys.END)
             sleep(0.1)
-            print(i)
+            #print(i)
 
         # Парсинг всех ссылок:
         objects = drv.find_elements_by_xpath(
@@ -55,11 +55,11 @@ def filt_3(path_to_urls, video_n1, video_n2):
 
         if (x >= video_n1) and (x <= video_n2):
             f_filt_3.write(obj.get_attribute("href") + "\n")
-            print("Записал ссылку в файл")
+            #print("Записал ссылку в файл")
 
         print("Количество видео на канале: ", x)
 
-        print(xx, " из ", count)
+        print("Фильтр 3: ", xx, " из ", count)
         xx += 1
 
     # Закрытие файлов:

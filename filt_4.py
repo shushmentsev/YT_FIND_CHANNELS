@@ -11,6 +11,7 @@ def filt_4(path_to_urls):
     
     # Открытие файлов:
     yt_ch_urls = open(path_to_urls, "r")
+    f_filt_4 = open("filt_4.txt", 'w')
 
     # Получение драйвера:
     drv = get_drv()
@@ -63,18 +64,18 @@ def filt_4(path_to_urls):
                 print("Есть адрес электронной почты!!!")
                 print(yt_ch_url)
                 
-                f_filt_4 = open("filt_4.txt", 'a')
                 f_filt_4.write(yt_ch_url)
-                f_filt_4.close()
+                
 
         del objects
 
-        print(x, " из ", count)
+        print("Фильтр 4: ", x, " из ", count)
         x += 1
         
 
     # Закрытие файлов:
     yt_ch_urls.close()
+    f_filt_4.close()
 
     # Закрытие браузера:
     drv.quit()

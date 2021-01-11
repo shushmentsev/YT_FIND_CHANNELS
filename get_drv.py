@@ -26,7 +26,7 @@ def set_opt():
     options.add_argument("--window-size=1240x720")
 
     # Безголовый режим:
-    #options.add_argument("headless")
+    options.add_argument("headless")
 
     return options
 

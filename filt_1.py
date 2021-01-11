@@ -27,17 +27,17 @@ def filt_1(path_to_urls, sb_n1, sb_n2):
 
         # Фильтр по числу подписчиков:
         obj = drv.find_element_by_xpath("//yt-formatted-string[@id='subscriber-count']")
-        print(obj.get_attribute("innerHTML"))
+        #print(obj.get_attribute("innerHTML"))
 
         if "тыс" not in obj.get_attribute("innerHTML"):
-            print(True)
+            #print(True)
             try:
                 my_lst = obj.get_attribute("innerHTML").split(' ')
-                print(int(my_lst[0]))
+                #print(int(my_lst[0]))
 
                 if (int(my_lst[0]) >= sb_n1) and (int(my_lst[0]) <= sb_n2):
 
-                    print("То, что нужно")
+                    #print("То, что нужно")
                     f_filt_1.write(yt_ch_url)
 
             except:

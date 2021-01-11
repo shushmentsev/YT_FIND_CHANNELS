@@ -7,7 +7,8 @@ from time import sleep
 from datetime import date
 from datetime import datetime
 
-def filt_2(path_to_urls):
+# Фильтр по дате регистрации:
+def filt_2(path_to_urls, days_1, days_2):
     
     # Открытие файлов:
     yt_ch_urls = open(path_to_urls, "r")
@@ -86,7 +87,7 @@ def filt_2(path_to_urls):
         days = int(str(date_21).split(" ")[0])
         print(days)
 
-        if (days >= int(0.5 * 365)) and (days < int(2 * 365)):
+        if (days >= days_1) and (days < days_2):
             print("Канал подходит по дате регистрации")
             f_filt_2.write(yt_ch_url)
         
@@ -100,4 +101,4 @@ def filt_2(path_to_urls):
 
 if __name__ == "__main__":
 
-    filt_2("filt_1.txt")
+    filt_2("filt_1.txt", int(0.5 * 365), int(2 * 365))

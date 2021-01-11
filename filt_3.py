@@ -5,7 +5,8 @@ from get_drv import get_drv
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 
-def filt_3(path_to_urls):
+# Фильтр по количеству роликов:
+def filt_3(path_to_urls, video_n1, video_n2):
 
     # Открытие файлов:
     yt_ch_urls = open(path_to_urls, "r")
@@ -45,7 +46,7 @@ def filt_3(path_to_urls):
             # print(obj.get_attribute("href"))
             x += 1
 
-        if (x >= 5) and (x <= 30):
+        if (x >= video_n1) and (x <= video_n2):
             f_filt_3.write(obj.get_attribute("href") + "\n")
             print("Записал ссылку в файл")
 

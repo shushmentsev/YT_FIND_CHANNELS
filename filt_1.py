@@ -2,7 +2,8 @@
 
 from get_drv import get_drv
 
-def filt_1(path_to_urls):
+# Фильтр по количеству подписчиков:
+def filt_1(path_to_urls, sb_n1, sb_n2):
     #
     #from conf import PTH_H_SUBS_URLS
     yt_ch_urls = open(path_to_urls, "r")
@@ -26,7 +27,7 @@ def filt_1(path_to_urls):
                 my_lst = obj.get_attribute("innerHTML").split(' ')
                 print(int(my_lst[0]))
 
-                if int(my_lst[0]) <= 50:
+                if (int(my_lst[0]) >= sb_n1) and (int(my_lst[0]) <= sb_n2):
 
                     print("То, что нужно")
                     f_filt_1.write(yt_ch_url)
@@ -44,4 +45,4 @@ def filt_1(path_to_urls):
 
 if __name__ == "__main__":
 
-    filt_1("filt_0.txt")
+    filt_1("filt_0.txt", 0, 500)

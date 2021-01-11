@@ -22,6 +22,8 @@ def filt_4(path_to_urls):
     # Нажатие для обхода всплывающих окон:
     drv.find_element_by_tag_name('body').send_keys(Keys.ESCAPE)
 
+    count = len(yt_ch_urls)
+    x = 1
     for yt_ch_url in yt_ch_urls:
 
         # Переход на сайт:
@@ -61,6 +63,9 @@ def filt_4(path_to_urls):
                 f_filt_4.close()
 
         del objects
+
+        print(x, " из ", count)
+        x += 1
         
 
     # Закрытие файлов:

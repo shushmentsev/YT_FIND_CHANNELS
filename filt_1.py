@@ -12,6 +12,8 @@ def filt_1(path_to_urls, sb_n1, sb_n2):
     f_filt_1 = open("filt_1.txt", "w")
 
     drv = get_drv()
+    count = len(yt_ch_urls)
+    x = 1
     for yt_ch_url in yt_ch_urls:
 
         # Открытие вкладки:
@@ -34,7 +36,10 @@ def filt_1(path_to_urls, sb_n1, sb_n2):
 
             except:
 
-                print("Ошибка")    
+                print("Ошибка")
+
+        print(x, " из ", count)
+        x += 1
 
     # Закрытие файлов:
     yt_ch_urls.close()

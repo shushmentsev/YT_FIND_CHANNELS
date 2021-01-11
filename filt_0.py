@@ -67,7 +67,7 @@ def filt_0(search_query):
     f.close()
 
     print("Count 1: ", x)
-    print("Count 2: ", x_2)
+    print("Количество видеороликов: ", x_2)
 
     # Закрытие браузера:
     drv.quit()

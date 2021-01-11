@@ -17,6 +17,8 @@ def filt_2(path_to_urls, days_1, days_2):
     # Получение драйвера:
     drv = get_drv()
 
+    count = len(yt_ch_urls)
+    x = 1
     for yt_ch_url in yt_ch_urls:
 
         # Переход на сайт:
@@ -90,6 +92,9 @@ def filt_2(path_to_urls, days_1, days_2):
         if (days >= days_1) and (days < days_2):
             print("Канал подходит по дате регистрации")
             f_filt_2.write(yt_ch_url)
+
+        print(x, " из ", count)
+        x += 1
         
 
     # Закрытие файлов:

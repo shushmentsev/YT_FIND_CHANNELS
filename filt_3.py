@@ -15,8 +15,13 @@ def filt_3(path_to_urls, video_n1, video_n2):
     # Получение драйвера:
     drv = get_drv()
 
-    count = len(yt_ch_urls)
-    x = 1
+    count = 0
+    for yt_ch_url in yt_ch_urls:
+        count += 1
+
+    yt_ch_urls.seek(0)
+    
+    xx = 1
     for yt_ch_url in yt_ch_urls:
 
         # Переход на сайт:
@@ -54,8 +59,8 @@ def filt_3(path_to_urls, video_n1, video_n2):
 
         print("Количество видео на канале: ", x)
 
-        print(x, " из ", count)
-        x += 1
+        print(xx, " из ", count)
+        xx += 1
 
     # Закрытие файлов:
     yt_ch_urls.close()

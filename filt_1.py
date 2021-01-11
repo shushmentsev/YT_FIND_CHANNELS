@@ -12,7 +12,13 @@ def filt_1(path_to_urls, sb_n1, sb_n2):
     f_filt_1 = open("filt_1.txt", "w")
 
     drv = get_drv()
-    count = len(yt_ch_urls)
+    
+    count = 0
+    for yt_ch_url in yt_ch_urls:
+        count += 1
+
+    yt_ch_urls.seek(0)
+    
     x = 1
     for yt_ch_url in yt_ch_urls:
 

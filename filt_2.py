@@ -17,7 +17,12 @@ def filt_2(path_to_urls, days_1, days_2):
     # Получение драйвера:
     drv = get_drv()
 
-    count = len(yt_ch_urls)
+    count = 0
+    for yt_ch_url in yt_ch_urls:
+        count += 1
+
+    yt_ch_urls.seek(0)
+    
     x = 1
     for yt_ch_url in yt_ch_urls:
 

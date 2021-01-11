@@ -42,7 +42,7 @@ def main_func():
     except:
         pass
     
-    f_filters = open("filters.txt", 'r')
+    f_filters = open("filters.txt", 'w')
 
     # Пересечение множеств со ссылками и запись результата в файл:
     urls_0 = set()

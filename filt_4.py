@@ -22,7 +22,12 @@ def filt_4(path_to_urls):
     # Нажатие для обхода всплывающих окон:
     drv.find_element_by_tag_name('body').send_keys(Keys.ESCAPE)
 
-    count = len(yt_ch_urls)
+    count = 0
+    for yt_ch_url in yt_ch_urls:
+        count += 1
+
+    yt_ch_urls.seek(0)
+    
     x = 1
     for yt_ch_url in yt_ch_urls:
 

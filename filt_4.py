@@ -46,12 +46,12 @@ def filt_4(path_to_urls):
 
         try:
         
-            butt = drv.find_element_by_xpath("//div[@id='tabsContent']/paper-tab[6]")
+            butt = drv.find_element_by_xpath("//div[@id='tabsContent']/tp-yt-paper-tab[6]")
             butt.click()
 
         except:
 
-            butt = drv.find_element_by_xpath("//div[@id='tabsContent']/paper-tab[5]")
+            butt = drv.find_element_by_xpath("//div[@id='tabsContent']/tp-yt-paper-tab[5]")
             butt.click()
 
         sleep(3)

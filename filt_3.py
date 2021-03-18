@@ -34,7 +34,7 @@ def filt_3(path_to_urls, video_n1, video_n2):
         # Нажатие для обхода всплывающих окон:
         drv.find_element_by_tag_name('body').send_keys(Keys.ESCAPE)
         
-        butt = drv.find_element_by_xpath("//div[@id='tabsContent']/paper-tab[2]")
+        butt = drv.find_element_by_xpath("//div[@id='tabsContent']/tp-yt-paper-tab[2]")
         butt.click()
 
         sleep(3)
@@ -71,4 +71,4 @@ def filt_3(path_to_urls, video_n1, video_n2):
 
 if __name__ == "__main__":
 
-    filt_3("filt_1.txt")
+    filt_3("filt_1.txt", 10, 50)
